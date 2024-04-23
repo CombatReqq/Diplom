@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище navModelContainer" CdmEntityContainer="navEntities">
+    <EntitySetMapping Name="alt_postavok">
+      <EntityTypeMapping TypeName="navModel.alt_postavok">
+        <MappingFragment StoreEntitySet="alt_postavok">
+          <ScalarProperty Name="id_tovar" ColumnName="id_tovar" />
+          <ScalarProperty Name="id_postavok" ColumnName="id_postavok" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="alt_serv">
+      <EntityTypeMapping TypeName="navModel.alt_serv">
+        <MappingFragment StoreEntitySet="alt_serv">
+          <ScalarProperty Name="id_serv" ColumnName="id_serv" />
+          <ScalarProperty Name="id_zakaz" ColumnName="id_zakaz" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="alt_tov">
+      <EntityTypeMapping TypeName="navModel.alt_tov">
+        <MappingFragment StoreEntitySet="alt_tov">
+          <ScalarProperty Name="id_tov" ColumnName="id_tov" />
+          <ScalarProperty Name="id_serv" ColumnName="id_serv" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="navModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="navModel.Services">
+        <MappingFragment StoreEntitySet="Services">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="session">
+      <EntityTypeMapping TypeName="navModel.session">
+        <MappingFragment StoreEntitySet="session">
+          <ScalarProperty Name="id_session" ColumnName="id_session" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="start_session" ColumnName="start_session" />
+          <ScalarProperty Name="end_session" ColumnName="end_session" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="navModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="navModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заказ">
+      <EntityTypeMapping TypeName="navModel.Заказ">
+        <MappingFragment StoreEntitySet="Заказ">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="id_клиента" ColumnName="id_клиента" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Клиенты">
+      <EntityTypeMapping TypeName="navModel.Клиенты">
+        <MappingFragment StoreEntitySet="Клиенты">
+          <ScalarProperty Name="id_клиента" ColumnName="id_клиента" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Поставки">
+      <EntityTypeMapping TypeName="navModel.Поставки">
+        <MappingFragment StoreEntitySet="Поставки">
+          <ScalarProperty Name="id_Supplies" ColumnName="id_Supplies" />
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="ID_of_the_receiving_product" ColumnName="ID_of_the_receiving_product" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Поставщик">
+      <EntityTypeMapping TypeName="navModel.Поставщик">
+        <MappingFragment StoreEntitySet="Поставщик">
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+          <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Склад">
+      <EntityTypeMapping TypeName="navModel.Склад">
+        <MappingFragment StoreEntitySet="Склад">
+          <ScalarProperty Name="id_tov" ColumnName="id_tov" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище navModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище navModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище navModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище navModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="navModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище navModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="navModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище navModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище navModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

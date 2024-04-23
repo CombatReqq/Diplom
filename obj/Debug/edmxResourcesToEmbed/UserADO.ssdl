@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище NavModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="alt_postavok">
+    <Key>
+      <PropertyRef Name="id_tovar" />
+      <PropertyRef Name="id_postavok" />
+    </Key>
+    <Property Name="id_tovar" Type="int" Nullable="false" />
+    <Property Name="id_postavok" Type="int" Nullable="false" />
+    <Property Name="count" Type="int" />
+  </EntityType>
+  <EntityType Name="alt_serv">
+    <Key>
+      <PropertyRef Name="id_serv" />
+      <PropertyRef Name="id_zakaz" />
+    </Key>
+    <Property Name="id_serv" Type="int" Nullable="false" />
+    <Property Name="id_zakaz" Type="int" Nullable="false" />
+    <Property Name="count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="alt_tov">
+    <Key>
+      <PropertyRef Name="id_tov" />
+      <PropertyRef Name="id_serv" />
+    </Key>
+    <Property Name="id_tov" Type="int" Nullable="false" />
+    <Property Name="id_serv" Type="int" Nullable="false" />
+    <Property Name="count" Type="int" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id_category" />
+    </Key>
+    <Property Name="id_category" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="time" Type="time" Precision="7" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="price" Type="int" />
+    <Property Name="discount" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Заказ">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="id_клиента" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Клиенты">
+    <Key>
+      <PropertyRef Name="id_клиента" />
+    </Key>
+    <Property Name="id_клиента" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="adress" Type="varchar" MaxLength="255" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="e_mail" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Поставки">
+    <Key>
+      <PropertyRef Name="id_Supplies" />
+    </Key>
+    <Property Name="id_Supplies" Type="int" Nullable="false" />
+    <Property Name="id_tov" Type="int" Nullable="false" />
+    <Property Name="id_supplier" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="count" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Поставщик">
+    <Key>
+      <PropertyRef Name="id_supplier" />
+    </Key>
+    <Property Name="id_supplier" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="adres" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="INN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="e_mail" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Расходы">
+    <Key>
+      <PropertyRef Name="_id" />
+    </Key>
+    <Property Name="_id" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Склад">
+    <Key>
+      <PropertyRef Name="id_tov" />
+    </Key>
+    <Property Name="id_tov" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="id_category" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="manufacturer" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="count" Type="int" />
+    <Property Name="cost" Type="int" />
+    <Property Name="img" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Nav.dbo.Min_zakaz" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Min_zakaz">
+    <Key>
+      <PropertyRef Name="Номер заказа" />
+      <PropertyRef Name="Заказчик" />
+      <PropertyRef Name="Дата" />
+    </Key>
+    <Property Name="Номер заказа" Type="int" Nullable="false" />
+    <Property Name="Заказчик" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Количество" Type="int" />
+    <Property Name="Цена" Type="int" />
+    <Property Name="Дата" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Заказ__id_клиент__34C8D9D1">
+    <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиенты">
+        <PropertyRef Name="id_клиента" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="id_клиента" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_alt_postavok_Поставки">
+    <End Role="Поставки" Type="Self.Поставки" Multiplicity="1" />
+    <End Role="alt_postavok" Type="Self.alt_postavok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Поставки">
+        <PropertyRef Name="id_Supplies" />
+      </Principal>
+      <Dependent Role="alt_postavok">
+        <PropertyRef Name="id_postavok" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_alt_postavok_Склад">
+    <End Role="Склад" Type="Self.Склад" Multiplicity="1" />
+    <End Role="alt_postavok" Type="Self.alt_postavok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Склад">
+        <PropertyRef Name="id_tov" />
+      </Principal>
+      <Dependent Role="alt_postavok">
+        <PropertyRef Name="id_tovar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_alt_serv_Services1">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="alt_serv" Type="Self.alt_serv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="alt_serv">
+        <PropertyRef Name="id_serv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_alt_serv_Заказ">
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="1" />
+    <End Role="alt_serv" Type="Self.alt_serv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заказ">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="alt_serv">
+        <PropertyRef Name="id_zakaz" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_alt_tov_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="alt_tov" Type="Self.alt_tov" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="alt_tov">
+        <PropertyRef Name="id_tov" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_alt_tov_Склад1">
+    <End Role="Склад" Type="Self.Склад" Multiplicity="1" />
+    <End Role="alt_tov" Type="Self.alt_tov" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Склад">
+        <PropertyRef Name="id_tov" />
+      </Principal>
+      <Dependent Role="alt_tov">
+        <PropertyRef Name="id_tov" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Поставки_Поставщик">
+    <End Role="Поставщик" Type="Self.Поставщик" Multiplicity="1" />
+    <End Role="Поставки" Type="Self.Поставки" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Поставщик">
+        <PropertyRef Name="id_supplier" />
+      </Principal>
+      <Dependent Role="Поставки">
+        <PropertyRef Name="id_supplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Склад_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Склад" Type="Self.Склад" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id_category" />
+      </Principal>
+      <Dependent Role="Склад">
+        <PropertyRef Name="id_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище NavModelContainer">
+    <EntitySet Name="alt_postavok" EntityType="Self.alt_postavok" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alt_serv" EntityType="Self.alt_serv" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alt_tov" EntityType="Self.alt_tov" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Заказ" EntityType="Self.Заказ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Клиенты" EntityType="Self.Клиенты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Поставки" EntityType="Self.Поставки" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Поставщик" EntityType="Self.Поставщик" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Расходы" EntityType="Self.Расходы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Склад" EntityType="Self.Склад" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Min_zakaz" EntityType="Self.Min_zakaz" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Min_zakaz].[Номер заказа] AS [Номер заказа], 
+    [Min_zakaz].[Заказчик] AS [Заказчик], 
+    [Min_zakaz].[Количество] AS [Количество], 
+    [Min_zakaz].[Цена] AS [Цена], 
+    [Min_zakaz].[Дата] AS [Дата]
+    FROM [dbo].[Min_zakaz] AS [Min_zakaz]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Заказ__id_клиент__34C8D9D1" Association="Self.FK__Заказ__id_клиент__34C8D9D1">
+      <End Role="Клиенты" EntitySet="Клиенты" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_alt_postavok_Поставки" Association="Self.FK_alt_postavok_Поставки">
+      <End Role="Поставки" EntitySet="Поставки" />
+      <End Role="alt_postavok" EntitySet="alt_postavok" />
+    </AssociationSet>
+    <AssociationSet Name="FK_alt_postavok_Склад" Association="Self.FK_alt_postavok_Склад">
+      <End Role="Склад" EntitySet="Склад" />
+      <End Role="alt_postavok" EntitySet="alt_postavok" />
+    </AssociationSet>
+    <AssociationSet Name="FK_alt_serv_Services1" Association="Self.FK_alt_serv_Services1">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="alt_serv" EntitySet="alt_serv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_alt_serv_Заказ" Association="Self.FK_alt_serv_Заказ">
+      <End Role="Заказ" EntitySet="Заказ" />
+      <End Role="alt_serv" EntitySet="alt_serv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_alt_tov_Services" Association="Self.FK_alt_tov_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="alt_tov" EntitySet="alt_tov" />
+    </AssociationSet>
+    <AssociationSet Name="FK_alt_tov_Склад1" Association="Self.FK_alt_tov_Склад1">
+      <End Role="Склад" EntitySet="Склад" />
+      <End Role="alt_tov" EntitySet="alt_tov" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Поставки_Поставщик" Association="Self.FK_Поставки_Поставщик">
+      <End Role="Поставщик" EntitySet="Поставщик" />
+      <End Role="Поставки" EntitySet="Поставки" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Склад_Category" Association="Self.FK_Склад_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Склад" EntitySet="Склад" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
